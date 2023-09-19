@@ -1,33 +1,38 @@
 import { Component } from 'react';
-
-const INITIAL_STATE = {
-  value: '',
-};
+import {
+  HeaderElement,
+  FormElement,
+  SearchButton,
+  InputElement,
+} from './Searchbar.styled';
 
 export class Searchbar extends Component {
   state = {
-    ...INITIAL_STATE,
+    value: '',
   };
 
   handleChange = ({ target: { value } }) => {
-    this.setState({ value });
+    this.setState({ value: value.trim() });
   };
 
   handleSubmit = evt => {
     evt.preventDefault();
+    if (!this.state.value) {
+      return alert('Please enter your request!');
+    }
     this.props.onSubmit(this.state.value);
-    this.setState(INITIAL_STATE);
+    this.setState({ value: '' });
   };
 
   render() {
     return (
-      <header className="searchbar">
-        <form className="form" onSubmit={this.handleSubmit}>
-          <button type="submit" className="button">
-            <span className="button-label">Search</span>
-          </button>
+      <HeaderElement className="searchbar">
+        <FormElement className="form" onSubmit={this.handleSubmit}>
+          <SearchButton type="submit" className="button">
+            <span className="button-label">&#128269;</span>
+          </SearchButton>
 
-          <input
+          <InputElement
             className="input"
             type="text"
             autoComplete="off"
@@ -36,8 +41,8 @@ export class Searchbar extends Component {
             onChange={this.handleChange}
             value={this.state.value}
           />
-        </form>
-      </header>
+        </FormElement>
+      </HeaderElement>
     );
   }
 }
