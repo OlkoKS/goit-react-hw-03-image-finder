@@ -1,9 +1,6 @@
 import { styled } from 'styled-components';
 
 export const HeaderElement = styled.header`
-  position: fixed;
-  z-index: 2;
-  top: 0;
   width: 100%;
   padding: 24px;
   display: flex;

@@ -11,6 +11,6 @@ export const ListComponent = styled.ul`
 
 export const ContainerElement = styled.div`
   width: 1158px;
-  margin: 120px auto 0;
+  margin: 24px auto 0;
   padding: 24px;
 `;
